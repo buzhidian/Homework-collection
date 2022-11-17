@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>练习</title>
+</head>
+<style>
+    ul {
+        display: flex;
+    }
+
+    li {
+        list-style: none;
+        margin: 0 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 100px;
+        height: 30px;
+    }
+
+    .box {
+        background: aqua;
+        width: 200px;
+        height: 200px;
+    }
+</style>
+
+<body>
+    <div id="app">
+        <h2>点击切换颜色</h2>
+        <hr>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+        <div class="box" id="box1">
+
+        </div>
+    </div>
+</body>
+<script>
+    console.log("------------- 1.let  --------------");
+    // 1.let 
+
+    // (1)不能重复声明
+    let boy = "小明"
+    // let boy = "小宋"
+
+    // (2)块级作用域
+    let girl = "小云" 
+    {
+        let girl = "小美"
+    }
+    console.log(girl);
+
+    // (3)不存在变量提升
+    // console.log(song);  //报错
+    let song = "歌曲"
+
+    // (4)不影响作用域链
+    {
+        let school = "交通大学"
+
+        function fn() {
+            console.log(school)
+        }
+        fn()
+    }
+
+    /* let boy1 = "小明"
+    // let boy = "小宋"
+    let girl1 = "小云"
+     {
+        let girl1 = "小美"
+    }
+    console.log(girl1);
+
+    // console.log(song1);  //报错
+    let song1 = "歌曲"
+
+    {
+        let school = "交通大学"
+        function fn(){
+            console.log(school)
+        }
+        fn()
+    } */
+
+    /* let boy1 = "小明"
+    // let boy = "小宋"
+    let girl1 = "小云"
+     {
+        let girl1 = "小美"
+    }
+    console.log(girl1);
+
+    // console.log(song1);  //报错
+    let song1 = "歌曲"
+
+    {
+        let school = "交通大学"
+        function fn(){
+            console.log(school)
+        }
+        fn()
+    } */
+
+    console.log("------------- 2.点击切换颜色 --------------");
+    // 2.点击切换颜色
+    let items = document.getElementsByTagName("li")
+
+    console.log(items);
+    for (let i = 0; i < items.length; i++) {
+        items[i].onclick = function () {
+            items[i].style.background = 'pink'
+        }
+        // 当let 变成var 后，变量会变成全局变量，所以最终的值会变化。
+    }
+
+    /* let items = document.getElementsByTagName("li")
+
+    console.log(items);
+    for (let i = 0; i < items.length; i++) {
+        items[i].onclick = function () {
+            items[i].style.background = 'pink'
+        }
+    } */
+
+    /* let items = document.getElementsByTagName("li")
+
+    console.log(items);
+    for (let i = 0; i < items.length; i++) {
+        items[i].onclick = function () {
+            items[i].style.background = 'pink'
+        }
+    } */
+
+    console.log("------------- 3.const --------------");
+    // 3.const 
+
+    /* 电视名称 */
+    const Name = "开端"
+
+    // 常量不可更改
+    // Name = "dadad"   //报错
+
+    // 可更改复杂数据类型
+    const TEAM = [1, 2, 3]
+    TEAM.push(4)
+
+    const OBJ = {
+        name: "独享",
+        age: "12"
+    }
+    OBJ.age = 22
+    console.log(TEAM, OBJ);
+
+    /* const Name1 = "开端"
+    const TEAM1 = [1,2,3]
+    TEAM1.push(4)
+
+    const OBJ1 = {
+        name:"独享",
+        age:"12"
+    }
+    OBJ1.age = 22
+    console.log(TEAM1,OBJ1); */
+
+    /* const Name1 = "开端"
+    const TEAM1 = [1,2,3]
+    TEAM1.push(4)
+
+    const OBJ1 = {
+        name:"独享",
+        age:"12"
+    }
+    OBJ1.age = 22
+    console.log(TEAM1,OBJ1); */
+
+    console.log("------------- 4.变量的结构赋值 --------------");
+    // 4.变量的结构赋值
+    const ARR = ["上课", "睡觉", "吃饭", "追剧"]
+    let [a, b, c, d] = ARR
+    console.log(a, b, c, d);
+
+    const ZHAO = {
+        name: "赵本山",
+        age: "50",
+        job: function () {
+            console.log("小品");
+        }
+    }
+    let {
+        name,
+        age,
+        job
+    } = ZHAO
+    console.log(name, age);
+    job()
+
+    // 单独解构
+    // let {name} = ZHAO
+    // console.log(name);
+
+
+    /* const ARR1 = ["上课","睡觉","吃饭","追剧"]
+    let [e,f,g,h] = ARR
+    console.log(e,f,g,h);
+
+    const ZHAO1 = {
+        name1:"赵本山",
+        age1:"50",
+        job1:function(){
+            console.log("小品");
+        }
+    }
+    let {name1,age1,job1} = ZHAO
+    console.log(name1,age1);
+    job1()
+    // let {name1} = ZHAO
+    // console.log(name1); */
+
+
+    /* const ARR1 = ["上课","睡觉","吃饭","追剧"]
+    let [e,f,g,h] = ARR
+    console.log(e,f,g,h);
+
+    const ZHAO1 = {
+        name1:"赵本山",
+        age1:"50",
+        job1:function(){
+            console.log("小品");
+        }
+    }
+    let {name1,age1,job1} = ZHAO
+    console.log(name1,age1);
+    job1()
+    // let {name1} = ZHAO
+    // console.log(name1); */
+
+
+    console.log("------------- 5.模板字符串 --------------");
+    // 5.模板字符串
+    let str1 = `
+        <ul>
+            <li>今天</li>
+            <li>是</li>
+            <li>星期四</li>
+        </ul>
+    `
+    console.log(str1);
+    document.write(str1)
+
+    /* let str2 = `
+        <ul>
+            <li>今天</li>
+            <li>是</li>
+            <li>星期四</li>
+        </ul>
+    `
+    console.log(str2);
+    document.write(str2) */
+
+    /* let str2 = `
+        <ul>
+            <li>今天</li>
+            <li>是</li>
+            <li>星期四</li>
+        </ul>
+    `
+    console.log(str2);
+    document.write(str2) */
+
+
+    console.log("------------- 6.对象的简化写法 --------------");
+    // 6.对象的简化写法
+    let name2 = "小新"
+    let age2 = 18
+    let like = function () {
+        console.log("play games");
+    }
+    const PERSON = {
+        name2,
+        age2,
+        like,
+    }
+    console.log(PERSON);
+    PERSON.like()
+
+    /* let name3 = "小新"
+    let age3 = 18
+    let like1 = function () {
+        console.log("play games");
+    }
+    const PERSON1 = {
+        name3,
+        age3,
+        like1,
+    }
+    console.log(PERSON1);
+    PERSON.like1() */
+
+    /* let name2 = "小新"
+    let age2 = 18
+    let like = function () {
+        console.log("play games");
+    }
+    const PERSON = {
+        name2,
+        age2,
+        like,
+    }
+    console.log(PERSON);
+    PERSON.like() */
+
+    console.log("------------- 7.箭头函数 --------------");
+    console.log("------------- this的指向 --------------");
+    // 7.箭头函数 
+
+    // this时静态的,this始终指向函数声明时所在的作用域下的 this的值
+    function getName() {
+        console.log(this.name);
+    }
+    let getName1 = () => {
+        console.log(this.name);
+    }
+    window.name = "我的电脑"
+    const school = {
+        name: "学校"
+    }
+    getName()
+    getName1()
+
+    getName.call(school)
+    getName1.call(school)
+
+    /* function getName() {
+        console.log(this.name);
+    }
+    let getName1 = ()=>{
+        console.log(this.name);
+    }
+    window.name = "我的电脑"
+    const school = {
+        name:"学校"
+    }
+    getName()
+    getName1()
+
+    getName.call(school)
+    getName1.call(school) */
+
+    /* function getName() {
+        console.log(this.name);
+    }
+    let getName1 = ()=>{
+        console.log(this.name);
+    }
+    window.name = "我的电脑"
+    const school = {
+        name:"学校"
+    }
+    getName()
+    getName1()
+
+    getName.call(school)
+    getName1.call(school) */
+
+
+    console.log("------------- 不能作为构造实例化对象 --------------");
+    // 不能作为构造实例化对象
+    let Person = (name, age) => {
+        this.name = name;
+        this.age = age;
+    }
+    // let pers = new Person("小明",22)
+    // console.log(pers);
+
+    console.log("------------- 不能使用arguments变量 --------------");
+    // 不能使用arguments变量
+    let fn = () => {
+        // console.log(arguments); //arguments is not defined
+    }
+    fn(1, 2, 3, 4, 5)
+
+
+    console.log("------------- 箭头函数的简写 --------------");
+    // 箭头函数的简写
+    // 1)当形参有且只有一个的时候,可以省略小括号
+    let add = n => {
+        return n + n
+    }
+    console.log(add(9));
+
+    // 2)可以省略花括号,当代码体只有一条语句的时候,此时 return 必须省略
+    let pow = n => n * n
+    console.log(pow(6));
+
+    // 下午
+    console.log("------------- 8.点击盒子两秒后变色 --------------");
+    // 8.点击盒子两秒后变色
+    let tbox = document.getElementsByClassName("box")
+    console.log(tbox);
+    tbox[0].addEventListener('click', function () {
+        setTimeout(() => {
+            this.style.background = "pink"
+        }, 2000)
+    })
+
+    /* let tbox = document.getElementsByClassName("box")
+    console.log(tbox);
+    tbox[0].addEventListener('click', function () {
+        setTimeout(()=>{
+            this.style.background = "pink"
+        },2000)
+    }) */
+
+    /* let tbox = document.getElementsByClassName("box")
+    console.log(tbox);
+    tbox[0].addEventListener('click', function () {
+        setTimeout(()=>{
+            this.style.background = "pink"
+        },2000)
+    }) */
+
+
+    console.log("------------- 9.从数组中返回偶数的元素 --------------");
+    // 9.从数组中返回偶数的元素
+    let arr5 = [1, 6, 10, 100, 25]
+    let res = arr5.filter(item => item % 2 === 0)
+    console.log(res);
+
+    // let arr5 = [1,6,10,100,25]
+    // let res = arr5.filter(item=>item % 2 === 0)
+    // console.log(res);
+
+    // let arr5 = [1,6,10,100,25]
+    // let res = arr5.filter(item=>item % 2 === 0)
+    // console.log(res);
+
+
+    console.log("---------- 10.函数参数的默认设置 ----------");
+    // 10.函数参数的默认设置
+    function add1(a, b, c = 10) {
+        return a + b + c
+    }
+    let res1 = add1(3, 5)
+    console.log(res1);
+
+    // 与解构赋值结合
+    function connect({
+        host = "123344",
+        username,
+        password,
+        port
+    }) {
+        console.log(host);
+        console.log(username);
+        console.log(password);
+        console.log(port);
+    }
+    connect({
+        host: "武汉",
+        username: "root",
+        password: "12334",
+        port: 232
+    })
+
+    /* function add1(a,b,c = 10) {
+        return a+b+c
+    }
+    let res2 = add1(3,5)
+    console.log(res2);
+
+    function connect({host="123344",username,password,port}) {
+        console.log(host);
+        console.log(username);
+        console.log(password);
+        console.log(port);
+    }
+    connect({
+        host:"武汉",
+        username:"root",
+        password:"12334",
+        port:232
+    }) */
+
+    /* function add1(a,b,c = 10) {
+        return a+b+c
+    }
+    let res2 = add1(3,5)
+    console.log(res2);
+
+    function connect({host="123344",username,password,port}) {
+        console.log(host);
+        console.log(username);
+        console.log(password);
+        console.log(port);
+    }
+    connect({
+        host:"武汉",
+        username:"root",
+        password:"12334",
+        port:232
+    }) */
+
+
+    console.log("---------- 11.reset ----------");
+    // 11.reset
+    // ES6 引用 reset 参数,用于获取函数的实参,用来代替 arguments
+
+    // ES5获取实参的方式
+    function date1() {
+        console.log(arguments);
+    }
+    date1("繁荣", "黄金", "哲学")
+
+    // rest 参数
+    function date2(...args) {
+        console.log(args);
+    }
+    date2("浮世", "倒影", "飘渺")
+
+    // rest 参数必须要放到参数最后
+    function fn2(a, b, ...args) {
+        console.log(a, b);
+        console.log(args);
+    }
+    fn2(1, 2, 3, 4, 5, 6, 7)
+
+    /* function date1() {
+        console.log(arguments);
+    }
+    date1("繁荣","黄金","哲学")
+    
+    function date2(...args) {
+        console.log(args);
+    }
+    date2("浮世","倒影","飘渺")
+
+    function fn2(a,b,...args) {
+        console.log(a,b);
+        console.log(args);
+    }
+    fn2(1,2,3,4,5,6,7) */
+
+    /* function date1() {
+        console.log(arguments);
+    }
+    date1("繁荣","黄金","哲学")
+    
+    function date2(...args) {
+        console.log(args);
+    }
+    date2("浮世","倒影","飘渺")
+
+    function fn2(a,b,...args) {
+        console.log(a,b);
+        console.log(args);
+    }
+    fn2(1,2,3,4,5,6,7) */
+
+
+    console.log("---------- 12.扩展运算符及应用 ----------");
+    // 12.扩展运算符及应用
+
+    // [...] 扩展运算符能将 数组 转化伪逗号分隔的参数序列
+    let arms = ["双手剑", "单手剑", "法器", "长枪", "弓箭"]
+
+    function change() {
+        console.log(arguments);
+    }
+    change(...arms)
+
+    // 应用
+    // 1.合并数组
+    let arr2 = [1, 2, 3]
+    let arr3 = [3, 45]
+    let arr = [...arr2, ...arr3]
+    console.log(arr);
+
+    // 2.数组克隆
+    let arr4 = [...arr2]
+    console.log(arr4);
+
+    // 3.伪数组转化为数组
+    let lis = document.querySelectorAll("li")
+    let lisArr = [...lis]
+    console.log(lisArr);
+
+    function makeArray() {
+        console.log(arguments)
+        let newArray = [...arguments]
+        return newArray
+    }
+    console.log(makeArray(1, 2, 3, 4));
+
+    /* let arr2 = [1,2,3]
+    let arr3 = [3,45]
+    let arr = [...arr1,...arr2]
+    console.log(arr);
+
+    let arr4 = [...arr2]
+    console.log(arr4);
+
+    let lis = document.querySelectorAll("li")
+    let lisArr = [...lis]
+    console.log(lisArr);
+
+    function makeArray() {
+        console.log(arguments)
+        let newArray = [...arguments]
+        return newArray
+    }
+    console.log(makeArray(1,2,3,4)); */
+
+    /* let arr2 = [1,2,3]
+    let arr3 = [3,45]
+    let arr = [...arr1,...arr2]
+    console.log(arr);
+
+    let arr4 = [...arr2]
+    console.log(arr4);
+
+    let lis = document.querySelectorAll("li")
+    let lisArr = [...lis]
+    console.log(lisArr);
+
+    function makeArray() {
+        console.log(arguments)
+        let newArray = [...arguments]
+        return newArray
+    }
+    console.log(makeArray(1,2,3,4)); */
+
+
+    console.log("---------- 13.symbol ----------");
+    // 13.symbol
+
+    let s = Symbol()
+    let s1 = Symbol("北京交大")
+    let s2 = Symbol("北京交大")
+    let s3 = Symbol.for("北京交大")
+    let s4 = Symbol.for("北京交大")
+
+    console.log(s, s1, s2, s3, s4);
+
+    // let s = Symbol()
+    // let s1 = Symbol("北京交大")
+    // let s2 = Symbol("北京交大")
+    // let s3 = Symbol.for("北京交大")
+    // let s4 = Symbol.for("北京交大")
+    // console.log(s,s1,s2,s3,s4);
+    // let s = Symbol()
+    // let s1 = Symbol("北京交大")
+    // let s2 = Symbol("北京交大")
+    // let s3 = Symbol.for("北京交大")
+    // let s4 = Symbol.for("北京交大")
+    // console.log(s,s1,s2,s3,s4);
+
+
+    console.log("---------- 13.promise ----------");
+    // 13.promise
+
+    // 什么是回调地狱？
+    /* ajax({
+        url: "",
+        methods: "get",
+        success: function () {
+            ajax({
+                url: "",
+                methods: "get",
+                success: function () {
+                    ajax({
+                        url: "",
+                        methods: "get",
+                        success: function () {
+                            ajax({
+                                url: "",
+                                methods: "get",
+                                success: function () {}
+                            })
+                        }
+                    })
+                }
+            })
+        }
+    }) */
+</script>
+
+</html>
