@@ -1,0 +1,21 @@
+class1：知识回顾：原型和原型链
+
+class2：回顾继承的六种方法
+
+
+class3：promise、
+
+【查看promise出现原因的第四条】
+
+class4：Promise的封装
+
+
+
+
+
+
+
+
+7+7+5+2+4 = 25
+
+

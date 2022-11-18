@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>课堂</title>
+</head>
+
+<body>
+    <div id="app">
+    </div>
+</body>
+<script>
+    // 复习原型和原型链
+
+
+    // 1.构造函数的首字母要大写
+
+    function Person() {
+        
+    }
+    let per = new Person()
+    console.log(Person);
+    console.log("---------");
+    console.dir(Person);
+    console.log("----------");
+    console.log(per);
+
+    console.log("---------分割线---------");
+    // 2.原型的继承
+    Person.prototype.say = function () {
+        console.log("在原型上添加的方法");
+    }
+    let per1 = new Person()
+    per1.say()    //在构造函数的原型上添加的方法，可以在实例上使用
+
+
+    // 3.原型链
+    // 4.继承
+
+
+
+    // 下午：
+    // 5.promise
+
+    // 1)Promise出现的原因
+
+    // 2)Promise的概念和语法
+
+    // 3)特点
+
+    // 4）和事件循环的区别
+
+    // 5)Promise 的回调参数
+
+
+
+    // 实例化 Promise 对象
+
+    console.log("-------分割线---------");
+    const pro = new Promise(function (resolve,reject) {
+        // setTimeout(() => {
+        //     let data = "我要休息了"
+        //     resolve(data)
+        // }, 1000);
+        setTimeout(() => {
+            let data = "我还不能休息"
+            reject(data)
+        }, 2000);
+    })
+
+    pro.then(res=>{
+        console.log(res);
+    }).catch(err=>{
+        console.log(err);
+    })
+    
+    // 简写方式
+
+
+
+    // 封装promise函数获取数据的js
+
+    /* const fs = require("fs")
+    const pro1 = new Promise(function (resolve,reject) {
+        fs.readFile("./文本.md",(err,data)=>{
+            if (err) {
+                reject(err)
+            }
+            resolve(data)
+        })
+    })
+
+    pro1.then(res=>{
+        console.log(res.toString());
+    }).catch(err=>{
+        console.log("读取失败");
+    }) */
+
+    // promise 封装ajax
+
+    // promise 的then方法
+    const result = pro.then(res=>{
+        console.log(res);
+    })
+
+
+</script>
+
+</html>
