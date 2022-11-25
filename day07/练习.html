@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>练习</title>
+</head>
+
+<body>
+    <div id="app">
+    </div>
+</body>
+<script>
+    // 1.class类 
+
+    // es5的构造函数定义对象
+    function Point(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+    Point.prototype.toStr = function () {
+        return "(" + this.x + "," + this.y + ")"
+    }
+    var poi = new Point(1, 2)
+    console.log(poi);
+    console.log(poi.toStr());
+
+    // es6 class 的写法
+    class Point1 {
+        constructor(x, y) {
+            this.x = x
+            this.y = y
+        }
+        toStr() {
+            return "(" + this.x + "," + this.y + ")"
+        }
+    }
+    let poi1 = new Point1(3, 4)
+    console.log(poi1);
+    console.log(poi1.toStr());
+
+
+    /* function Point(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+    Point.prototype.toStr = function () {
+        return "(" + this.x + "," + this.y + ")"
+    }
+    var poi = new Point(1, 2)
+    console.log(poi);
+    console.log(poi.toStr());
+    class Point1 {
+        constructor(x, y) {
+            this.x = x
+            this.y = y
+        }
+        toStr() {
+            return "(" + this.x + "," + this.y + ")"
+        }
+    }
+    let poi1 = new Point1(3, 4)
+    console.log(poi1);
+    console.log(poi1.toStr()); */
+
+    /* function Point(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+    Point.prototype.toStr = function () {
+        return "(" + this.x + "," + this.y + ")"
+    }
+    var poi = new Point(1, 2)
+    console.log(poi);
+    console.log(poi.toStr());
+    class Point1 {
+        constructor(x, y) {
+            this.x = x
+            this.y = y
+        }
+        toStr() {
+            return "(" + this.x + "," + this.y + ")"
+        }
+    }
+    let poi1 = new Point1(3, 4)
+    console.log(poi1);
+    console.log(poi1.toStr()); */
+
+    console.log("----get和set属性----");
+    // 2.class的get和set属性
+    class Phone1 {
+        get price (){
+            console.log("价格属性被读取了");
+            return "价格价格"
+        }
+        set price(newVal){
+            console.log("价格属性被修改了");
+        }
+    }
+    let pho1 = new Phone1()
+    console.log(pho1.price);
+    pho1.price = "free"
+
+    /* class Phone1 {
+        get price (){
+            console.log("价格属性被读取了");
+            return "价格价格"
+        }
+        set price(newVal){
+            console.log("价格属性被修改了");
+        }
+    }
+    let pho1 = new Phone1()
+    console.log(pho1.price);
+    pho1.price = "free" */
+
+    /* class Phone1 {
+        get price (){
+            console.log("价格属性被读取了");
+            return "价格价格"
+        }
+        set price(newVal){
+            console.log("价格属性被修改了");
+        }
+    }
+    let pho1 = new Phone1()
+    console.log(pho1.price);
+    pho1.price = "free" */
+
+    console.log("----static属性----");
+    // 3.static属性
+    class Tri {
+        static tri(n = 1) {
+            return n * 3
+        }
+    }
+
+    console.log(Tri.tri());
+    console.log(Tri.tri(5));
+
+    let tp = new Tri()
+    // console.log(tp.tri());  //tp.tri is not a function
+
+
+    /* class Tri {
+        static tri(n = 1) {
+            return n * 3
+        }
+    }
+    console.log(Tri.tri());
+    console.log(Tri.tri(5));
+    let tp = new Tri()
+    console.log(tp.tri()); */
+
+    /* class Tri {
+        static tri(n = 1) {
+            return n * 3
+        }
+    }
+    console.log(Tri.tri());
+    console.log(Tri.tri(5));
+    let tp = new Tri()
+    console.log(tp.tri()); */
+
+    
+    console.log("----class继承----");
+    // 4.class继承
+
+    // 原生的继承
+    function Pho(b, p) {
+        this.b = b;
+        this.p = p;
+    }
+    Pho.prototype.call = function () {
+        console.log("打电话");
+    }
+
+    function SmartPho(b, p, color, size) {
+        Pho.call(this, b, p)
+        this.c = color
+        this.s = size
+    }
+    SmartPho.prototype = new Pho
+    SmartPho.prototype.constructor = SmartPho
+
+    SmartPho.prototype.photo = function () {
+        console.log("智能手机");
+    }
+    SmartPho.prototype.play = function () {
+        console.log("可以打游戏");
+    }
+
+    const xiaomi = new SmartPho("小米", 1999, "黄金", "5.5寸")
+    console.log(xiaomi);
+
+    // class类的继承
+    class Phone {
+        constructor(b, p) {
+            this.b = b;
+            this.p = p;
+        }
+        call(){
+            console.log("父类的打电话");
+        }
+    }
+    class SmartPhone extends Phone{
+        constructor(b,p,c,s){
+            super(b,p)
+            this.c = c
+            this.s = s
+        }
+        photo(){
+            console.log("拍照功能");
+        }
+        playGame(){
+            console.log("游戏功能");
+        }
+        call(){
+            console.log("子类的视频通话");
+        }
+    }
+    const redmi = new SmartPhone("红米",799,'炫紫',"4.7寸")
+    redmi.photo()
+    redmi.playGame()
+    redmi.call()
+
+
+
+    /* function Pho(b, p) {
+        this.b = b;
+        this.p = p;
+    }
+    Pho.prototype.call = function () {
+        console.log("打电话");
+    }
+    function SmartPho(b, p, color, size) {
+        Pho.call(this, b, p)
+        this.c = color
+        this.s = size
+    }
+    SmartPho.prototype = new Pho
+    SmartPho.prototype.constructor = SmartPho
+    SmartPho.prototype.photo = function () {
+        console.log("智能手机");
+    }
+    SmartPho.prototype.play = function () {
+        console.log("可以打游戏");
+    }
+    const xiaomi = new SmartPho("小米", 1999, "黄金", "5.5寸")
+    console.log(xiaomi);
+    class Phone {
+        constructor(b, p) {
+            this.b = b;
+            this.p = p;
+        }
+        call(){
+            console.log("父类的打电话");
+        }
+    }
+    class SmartPhone extends Phone{
+        constructor(b,p,c,s){
+            super(b,p)
+            this.c = c
+            this.s = s
+        }
+        photo(){
+            console.log("拍照功能");
+        }
+        playGame(){
+            console.log("游戏功能");
+        }
+        call(){
+            console.log("子类的视频通话");
+        }
+    }
+    const redmi = new SmartPhone("红米",799,'炫紫',"4.7寸")
+    redmi.photo()
+    redmi.playGame()
+    redmi.call() */
+
+
+    /* function Pho(b, p) {
+        this.b = b;
+        this.p = p;
+    }
+    Pho.prototype.call = function () {
+        console.log("打电话");
+    }
+    function SmartPho(b, p, color, size) {
+        Pho.call(this, b, p)
+        this.c = color
+        this.s = size
+    }
+    SmartPho.prototype = new Pho
+    SmartPho.prototype.constructor = SmartPho
+    SmartPho.prototype.photo = function () {
+        console.log("智能手机");
+    }
+    SmartPho.prototype.play = function () {
+        console.log("可以打游戏");
+    }
+    const xiaomi = new SmartPho("小米", 1999, "黄金", "5.5寸")
+    console.log(xiaomi);
+    class Phone {
+        constructor(b, p) {
+            this.b = b;
+            this.p = p;
+        }
+        call(){
+            console.log("父类的打电话");
+        }
+    }
+    class SmartPhone extends Phone{
+        constructor(b,p,c,s){
+            super(b,p)
+            this.c = c
+            this.s = s
+        }
+        photo(){
+            console.log("拍照功能");
+        }
+        playGame(){
+            console.log("游戏功能");
+        }
+        call(){
+            console.log("子类的视频通话");
+        }
+    }
+    const redmi = new SmartPhone("红米",799,'炫紫',"4.7寸")
+    redmi.photo()
+    redmi.playGame()
+    redmi.call() */
+
+    
+    console.log("----数值的扩展----");
+    // 5.数值的扩展
+
+    // 1.最小精度  Number.EPSILON 是 JS 表示最小精度
+    // EPSILON 属性值接近于 2.2204460
+    function equal(a, b) {
+        if (Math.abs(a - b) < Number.EPSILON) {
+            return true
+        } else {
+            return false
+        }
+    }
+    console.log((0.1 + 0.2 === 0.3));
+    console.log(equal(0.1 + 0.2, 0.3));
+
+
+    // 2.二进制、八进制和十进制
+    let b = 0b100
+    let o = 0o777
+    let d = 120
+    let x = 0xff
+    console.log(b, o, d, x);
+
+    // 3.Number.isFinite 检测一个数值是否为有限数
+    console.log(Number.isFinite(100), "isFinite");
+    console.log(Number.isFinite(100 / 0), "isFinite");
+    console.log(Number.isFinite(Infinity), "isFinite");
+
+    // 4.Number.isNaN  检测一个数值是否为 NaN (非数字)
+    console.log(Number.isNaN(123), "isNaN");
+    console.log(isNaN("字符"), "isNaN");
+    console.log(new Number());
+
+    // 5.Number.parseInt , Number.parseFloat 字符串转数字
+    console.log(Number.parseInt("12334.545love"));
+    console.log(Number.parseFloat("4355.3334神奇"));
+
+    // 6.Number.isInteger 判断一个数是否为整数
+    console.log(Number.isInteger(5), 'isInteger');
+    console.log(Number.isInteger(2.5), 'isInteger');
+
+    // 7.Math.trunc  将数字的小数部分抹掉
+    console.log(Math.trunc(3.545), "trunc");
+
+    // 8.Math.sign  判断一个数是正数(1)、0、负数(-1)
+    console.log(Math.sign(110));
+    console.log(Math.sign(0));
+    console.log(Math.sign(-110));
+
+
+    
+    /* function equal(a, b) {
+        if (Math.abs(a - b) < Number.EPSILON) {
+            return true
+        } else {
+            return false
+        }
+    }
+    console.log((0.1 + 0.2 === 0.3));
+    console.log(equal(0.1 + 0.2, 0.3));
+
+    let b = 0b100
+    let o = 0o777
+    let d = 120
+    let x = 0xff
+    console.log(b, o, d, x);
+
+    console.log(Number.isFinite(100), "isFinite");
+    console.log(Number.isFinite(100 / 0), "isFinite");
+    console.log(Number.isFinite(Infinity), "isFinite");
+    console.log(Number.isNaN(123), "isNaN");
+    console.log(isNaN("字符"), "isNaN");
+    console.log(new Number());
+    console.log(Number.parseInt("12334.545love"));
+    console.log(Number.parseFloat("4355.3334神奇"));
+    console.log(Number.isInteger(5), 'isInteger');
+    console.log(Number.isInteger(2.5), 'isInteger');
+    console.log(Math.trunc(3.545), "trunc");
+    console.log(Math.sign(110));
+    console.log(Math.sign(0));
+    console.log(Math.sign(-110)); */
+
+
+    console.log("----数值的扩展----");
+    // 6.数组的扩展
+    let arr1 = new Array(3)
+    let arr2 = new Array(3).fill(6)
+
+    console.log(arr1, arr2, "Array");
+
+    
+    console.log("----对象的扩展----");
+    // 7.对象的扩展
+
+    // 属性名表达式
+    // JavaScript 定义对象的属性，有两种方法。
+    let test = {}
+    // 方法一
+    test.foo = true;
+
+    // 方法二
+    test['a' + 'bc'] = 123;
+    console.log(test, "obj");
+
+    // 函数的name属性，返回函数名。对象方法也是函数，因此也有name属性
+    const person = {
+        sayName() {
+            console.log('hello!');
+        },
+    };
+    console.log(person.sayName.name,"name");
+
+
+    // super关键字，指向当前对象的原型对象
+    const proto = {
+        foo: "hellow"
+    }
+    const obj = {
+        foo: "world",
+        find() {
+            return super.foo
+        }
+    }
+    Object.setPrototypeOf(obj, proto)
+    console.log(obj.find());
+
+
+
+    /* const person = {
+        sayName() {
+            console.log('hello!');
+        },
+    };
+    console.log(person.sayName.name,"name");
+    const proto = {
+        foo: "hellow"
+    }
+    const obj = {
+        foo: "world",
+        find() {
+            return super.foo
+        }
+    }
+    Object.setPrototypeOf(obj, proto)
+    console.log(obj.find()); */
+    
+
+    /* const person = {
+        sayName() {
+            console.log('hello!');
+        },
+    };
+    console.log(person.sayName.name,"name");
+    const proto = {
+        foo: "hellow"
+    }
+    const obj = {
+        foo: "world",
+        find() {
+            return super.foo
+        }
+    }
+    Object.setPrototypeOf(obj, proto)
+    console.log(obj.find()); */
+
+
+    console.log("----proxy----");
+    // 8.proxy 对象代理
+
+    var pro = new Proxy({}, {
+        get: function (target, key, receiver) {
+            console.log(`获取 ${key}`);
+            return Reflect.get(target, key.receiver)
+        },
+        set: function (target, key, value, receiver) {
+            console.log(`设置 ${key}`);
+            return Reflect.get(target, key, value, receiver)
+        },
+    })
+    pro.count = 12323
+    ++pro.count
+    console.log(pro, "92");
+
+
+    /* var pro = new Proxy({}, {
+        get: function (target, key, receiver) {
+            console.log(`获取 ${key}`);
+            return Reflect.get(target, key.receiver)
+        },
+        set: function (target, key, value, receiver) {
+            console.log(`设置 ${key}`);
+            return Reflect.get(target, key, value, receiver)
+        },
+    })
+    pro.count = 12323
+    ++pro.count
+    console.log(pro, "92"); */
+
+    
+    /* var pro = new Proxy({}, {
+        get: function (target, key, receiver) {
+            console.log(`获取 ${key}`);
+            return Reflect.get(target, key.receiver)
+        },
+        set: function (target, key, value, receiver) {
+            console.log(`设置 ${key}`);
+            return Reflect.get(target, key, value, receiver)
+        },
+    })
+    pro.count = 12323
+    ++pro.count
+    console.log(pro, "92"); */
+
+
+
+
+
+
+</script>
+
+</html>
