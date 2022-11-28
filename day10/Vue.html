@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>课堂</title>
+</head>
+<style>
+    .parent {
+        width: 100px;
+        height: 100px;
+        background-color: aqua;
+        cursor: pointer;
+    }
+
+    .child {
+        width: 50px;
+        height: 50px;
+        background-color: pink;
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <div id="app">
+        <h2>欢迎来到{{name}}的世界</h2>
+        <div class="box">
+            <input type="text" placeholder="单向绑定" v-bind:value="value">
+            <input type="text" placeholder="双向绑定" v-model="value">
+            <p>{{value}}</p>
+        </div>
+
+
+        <a href="https://blog.csdn.net/tingyu6560?type=blog" @click.prevent="handler">点击跳转</a>
+
+
+        <p>{{msg}}</p>
+
+        <div class="parent" @click="handlerPar">
+            <span>父节点</span>
+            <div class="child" @click="handlerChild">子节点</div>
+        </div>
+
+    </div>
+</body>
+<script src="./课堂js/vue.js"></script>
+<script>
+    Vue.config.productionTip = false
+    const vm = new Vue({
+        // el: '#app',
+        data: {
+            msg: "新信息",
+            name: "不栀丶",
+            value: "",
+        },
+        methods: {
+            // 点击跳转
+            handler(e) {
+                console.log(e);
+                console.log(e.target);
+                // e.preventDefault()
+
+                alert("提示信息")
+            },
+            handlerChild() {
+                console.log("触发子节点");
+            },
+            handlerPar() {
+                console.log("触发了父节点");
+            }
+        }
+    })
+    var timer = setTimeout(() => {
+        console.log(111);
+        vm.$mount("#app")
+    }, 1000)
+</script>
+
+</html>

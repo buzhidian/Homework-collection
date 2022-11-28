@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>toDo</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <div id="app">
+        <!-- 头部内容 -->
+        <div class="head">
+            <img src="./note.75134fb0.svg" alt="">
+            <p>To-DoList</p>
+        </div>
+        <!-- 标题 -->
+        <div class="title">
+            <h1>~ Today I need to ~</h1>
+        </div>
+        <!-- 添加表单 -->
+        <div class="form">
+            <div class="input">
+                <input type="text" placeholder="Add new todo..." id="inp">
+            </div>
+            <button id="submit"><span>Submit</span></button>
+        </div>
+        <!-- 主体内容 -->
+        <div class="body">
+            <ul id="list">
+                <li class="">
+                    <button class="checkbox-btn">
+                        <div class="checkbox"></div>
+                    </button>
+
+                    <!-- <input type="checkbox" class="checkbox-btn"> -->
+                    <p class="content">
+                       11124324
+                    </p>
+                    <button class="close-btn">×</button>
+                </li>
+                <li class="completed">
+                    <button class="checkbox-btn">
+                        <svg class="svg-inline--fa fa-check fa-w-16 check" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" >
+                            <path fill="currentColor" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z" ></path>
+                        </svg>
+
+                        <!-- <div class="checked">√</div> -->
+                    </button>
+
+                    <!-- <input type="checkbox" class="checkbox-btn" checked> -->
+                    <p class="content">
+                        4353534
+                    </p>
+                    <button class="close-btn close-com">×</button>
+                </li>
+            </ul>
+        </div>
+        <!-- 尾部内容 -->
+        <div class="footer">
+            <span class="number">1 item left</span>
+            <div class="filters">
+                <span class="option active">All</span>
+                <span class="option">Active</span>
+                <span class="option">Completed</span>
+            </div>
+            <span class="option">Clear completed</span>
+        </div>
+
+    </div>
+</body>
+<!-- <script src="./js/index.js"></script> -->
+<script>
+</script>
+
+</html>
