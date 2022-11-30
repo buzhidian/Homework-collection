@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>课堂</title>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h3>遍历数组</h3>
+        <ul>
+            <li v-for="(item,index) in person" :key="item.id">
+               <span>{{item.name}} -- {{item.age}}</span>
+               <input type="text">
+            </li>
+        </ul>
+        <button @click="add">添加一个</button>
+        <br>
+        <h3>遍历对象</h3>
+        <ul>
+            <li v-for="(value,key) in car" :key="key">
+                {{key + "--" + value}}
+            </li>
+        </ul>
+
+        <br>
+        <h3>遍历字符串</h3>
+        <ul>
+            <li v-for="(char,index) in str" :key="index">{{char + "--" + index}}</li>
+        </ul>
+
+        <br>
+        <h3>遍历指定次数</h3>
+        <ul>
+            <li v-for="(number,index) in 5" :key="index">
+                {{index + "--" + number}}
+            </li>
+        </ul>
+
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            person:[
+                {id:'001',name:'张三',age:18},
+                {id:'002',name:'李四',age:19},
+                {id:'003',name:'王五',age:20}
+            ],
+            car:{
+                name:"奔驰",
+                price:"40万",
+                color:"粉色"
+            },
+            str:"helllow"
+        },
+        methods: {
+            add(){
+                this.person.unshift({id:'004',name:"老刘",age:21})
+            }
+        }
+    })
+
+
+    
+</script>
+
+</html>

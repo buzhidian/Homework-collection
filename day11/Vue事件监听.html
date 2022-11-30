@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>课堂</title>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>姓：<input type="text" v-model="firstName"></p>
+        <p>名：<input type="text" v-model="lastName"></p>
+        <p>全名：<input type="text" v-model="fullName"></p>
+        <p>sonNum的值为： {{deeper.num.parentNum.sonNum}}</p>
+        <button @click="handler">点击修改deeper</button>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    Vue.config.productionTip = false //阻止 vue 在启动时生成生产提示。
+    new Vue({
+        el: '#app',
+        data: {
+            firstName: "小",
+            lastName: "白船",
+            fullName: "",
+            deeper: {
+                num1: 1,
+                num2: 2,
+                num: {
+                    parentNum: {
+                        sonNum: 12
+                    }
+                }
+            }
+        },
+        methods: {
+            handler() {
+                console.log("点击修改deeper属性");
+                this.deeper.num.parentNum.sonNum = 20
+                console.log(this.deeper);
+            }
+        },
+        watch: {
+            firstName: {
+                deep: true, //深度监听
+                // immediate: true, //立即监听
+                handler(newVal, oldVal) {
+                    console.log(newVal, oldVal);
+                    this.fullName = this.firstName + "-" + this.lastName
+                }
+            },
+            lastName: {
+                handler(newVal, oldVal) {
+                    console.log(newVal, oldVal);
+                    // 设置异步事件
+                    setTimeout(() => {
+                        this.fullName = this.firstName + "-" + this.lastName
+                    }, 2000)
+                }
+            },
+            fullName: {
+                immediate: true, //立即监听
+                handler(newVal, oldVal) {
+                    if (!newVal && !oldVal) {
+                        this.fullName = this.firstName + "-" + this.lastName
+
+                    }
+
+                    console.log(newVal, oldVal);
+                    let arr = this.fullName.split("-")
+                    this.firstName = arr[0]
+                    this.lastName = arr[1]
+                }
+            },
+
+            // 简写
+            /* fullName(newVal, oldVal) {
+                let arr = this.fullName.split("-")
+                this.firstName = arr[0]
+                this.lastName = arr[1]
+            } */
+
+            // 深度监听
+            deeper: {
+                deep:true,
+                handler(newVal, oldVal) {
+                    console.log("deeper被修改了");
+                }
+            }
+        },
+    })
+</script>
+
+</html>
