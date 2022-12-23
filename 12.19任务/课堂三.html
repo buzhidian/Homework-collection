@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>课堂</title>
+</head>
+
+<style>
+</style>
+
+<body>
+    <div id="app">
+        <canvas id="c" width="300" height="400" style="border: 1px solid #ccc;"></canvas>
+    </div>
+
+</body>
+<script>
+    const cnv = document.getElementById("c")
+    const cxt = cnv.getContext("2d")
+    
+    cxt.moveTo(50,150)  //起点
+    cxt.lineTo(200,150)  //终点
+    cxt.lineTo(200,300)  //终点
+    cxt.lineTo(50,300)  //终点
+    cxt.closePath(50,100)  //终点
+
+    cxt.moveTo(100,200)  //起点
+    cxt.lineTo(100,250)  //终点
+    cxt.lineTo(150,250)  //终点
+    cxt.lineTo(150,200)  //终点
+    cxt.closePath(100,200)  //终点
+    cxt.fillStyle = 'aqua'
+
+    cxt.fill()
+
+    cxt.font = '60px Arial'
+    cxt.strokeStyle = 'red'
+    cxt.strokeText('描边',30,90)
+
+    cxt.fillStyle = 'blue'
+    cxt.fillText('填充',200,90,100)
+
+    console.log(cxt.measureText('描边').width);
+
+    cxt.beginPath()
+    cxt.moveTo(150,0)
+    cxt.lineTo(150,400)
+    cxt.strokeStyle = 'red'
+    cxt.stroke()
+    
+
+</script>
+
+</html>
