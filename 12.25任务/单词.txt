@@ -1,0 +1,12 @@
+单词：
+
+staging  灰度环境 备机环境  半生产环境
+withCredentials  跨域是否开凭证
+interceptors  拦截器
+Authorization  （请求头）
+productionSourceMap  默认关闭生产环境的资源
+secure    是否开启http保护
+pathRewrite  路径的重命名
+singleQuote  使用单引号
+trailingComma  句尾添加逗号
+semi  使用分号
